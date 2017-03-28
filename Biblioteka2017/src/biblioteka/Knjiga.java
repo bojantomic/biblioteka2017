@@ -11,6 +11,9 @@ public class Knjiga {
 	private LinkedList<Autor> autori;
 	
 	public String getNaslov() {
+		if (naslov == null || naslov.isEmpty())
+			throw new RuntimeException("Morate uneti naslov");
+		
 		return naslov;
 	}
 	public void setNaslov(String naslov) {
@@ -20,24 +23,35 @@ public class Knjiga {
 		return isbn;
 	}
 	public void setIsbn(long isbn) {
+		if (isbn <= 0)
+			throw new RuntimeException("Morate uneti isbn");
+
 		this.isbn = isbn;
 	}
 	public String getIzdavac() {
 		return izdavac;
 	}
 	public void setIzdavac(String izdavac) {
+		if (izdavac == null || izdavac.isEmpty())
+			throw new RuntimeException("Morate uneti izdavaca");
 		this.izdavac = izdavac;
 	}
 	public int getIzdanje() {
 		return izdanje;
 	}
 	public void setIzdanje(int izdanje) {
+		if (izdanje <= 0)
+			throw new RuntimeException("Morate uneti izdanje");
+
 		this.izdanje = izdanje;
 	}
 	public LinkedList<Autor> getAutori() {
 		return autori;
 	}
 	public void setAutori(LinkedList<Autor> autori) {
+		if (autori == null || autori.isEmpty())
+			throw new RuntimeException("Morate uneti bar jednog autora");
+
 		this.autori = autori;
 	}
 	@Override

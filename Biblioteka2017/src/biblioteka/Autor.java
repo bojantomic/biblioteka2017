@@ -9,12 +9,18 @@ public class Autor {
 		return ime;
 	}
 	public void setIme(String ime) {
+		if (ime == null || ime.isEmpty())
+			throw new RuntimeException("Ime ne sme biti prazno");
+		
 		this.ime = ime;
 	}
 	public String getPrezime() {
 		return prezime;
 	}
 	public void setPrezime(String prezime) {
+		if (prezime == null || prezime.isEmpty())
+			throw new RuntimeException("Prezime ne sme biti prazno");
+
 		this.prezime = prezime;
 	}
 	@Override
