@@ -11,12 +11,12 @@ public class Knjiga {
 	private LinkedList<Autor> autori;
 	
 	public String getNaslov() {
-		if (naslov == null || naslov.isEmpty())
-			throw new RuntimeException("Morate uneti naslov");
-		
 		return naslov;
 	}
 	public void setNaslov(String naslov) {
+		if (naslov == null || naslov.isEmpty())
+			throw new RuntimeException("Morate uneti naslov");
+
 		this.naslov = naslov;
 	}
 	public long getIsbn() {
