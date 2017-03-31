@@ -1,32 +1,85 @@
 package biblioteka;
 
+/**
+ * Klasa koja predstavlja autora knjige.
+ * 
+ * @author Bojan Tomic
+ * @version 1.0
+ *
+ */
 public class Autor {
 	
+	/**
+	 * Ime autora.
+	 */
 	private String ime;
+	
+	/**
+	 * Prezime autora.
+	 */
 	private String prezime;
 	
+	/**
+	 * Vraca vrednost atributa ime autora.
+	 * @return ime autora kao String
+	 */
 	public String getIme() {
 		return ime;
 	}
+	
+	/**
+	 * Postavlja novu vrednost za atribut ime.
+	 * @param ime novo ime autora
+	 * @throws java.lang.RuntimeException ako je uneo ime:
+	 * 
+	 * <ul>
+	 * <li>null</li>
+	 * <li>prazan String</li>
+	 * </ul>
+	 */
 	public void setIme(String ime) {
 		if (ime == null || ime.isEmpty())
 			throw new RuntimeException("Ime ne sme biti prazno");
 		
 		this.ime = ime;
 	}
+	
+	/**
+	 * Vraca vrednost atributa prezime autora.
+	 * @return prezime autora kao String
+	 */
 	public String getPrezime() {
 		return prezime;
 	}
+	
+	/**
+	 * Postavlja novu vrednost za atribut prezime.
+	 * @param prezime novo prezime autora
+	 * @throws java.lang.RuntimeException ako je uneo prezime:
+	 * 
+	 * <ul>
+	 * <li>null</li>
+	 * <li>prazan String</li>
+	 * </ul>
+	 */
 	public void setPrezime(String prezime) {
 		if (prezime == null || prezime.isEmpty())
 			throw new RuntimeException("Prezime ne sme biti prazno");
 
 		this.prezime = prezime;
 	}
-	@Override
+	
+	/**
+	 * Vraca String sa svim podacima autora.
+	 * @return Ime i prezime autora uz odgovarajucu poruku.
+	 */
 	public String toString() {
 		return "Autor [ime=" + ime + ", prezime=" + prezime + "]";
 	}
+	
+	/**
+	 * Vraca hash code dobijen na osnovu vrednosti atributa ime i prezime
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -35,6 +88,11 @@ public class Autor {
 		result = prime * result + ((prezime == null) ? 0 : prezime.hashCode());
 		return result;
 	}
+	
+	/**
+	 * Poredi dva objekta klase Autor.
+	 * @return true ako su ime i prezime oba autora isti a false inace.
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
