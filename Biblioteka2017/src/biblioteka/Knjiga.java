@@ -1,8 +1,14 @@
 package biblioteka;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class Knjiga {
+public class Knjiga implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3703480367619355688L;
 	
 	private String naslov;
 	private long isbn;

@@ -8,6 +8,11 @@ import javax.swing.table.AbstractTableModel;
 import biblioteka.Knjiga;
 
 public class PrikazKnjigaTableModel extends AbstractTableModel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1417380016618100297L;
+	
 	private String[] kolone = {"Naslov","ISBN","Izdavac",
 			"Izdanje","Prvi autor","Drugi autor"};
 	private List<Knjiga> knjige;

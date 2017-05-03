@@ -1,8 +1,5 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -16,6 +13,10 @@ import java.awt.event.ActionEvent;
 
 public class DodajKnjiguProzor extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1018352797613575834L;
 	private JPanel contentPane;
 	private JLabel lblNaslov;
 	private JLabel lblIsbn;
@@ -211,7 +212,6 @@ public class DodajKnjiguProzor extends JFrame {
 					String prezime2 = polje2prezime.getText();
 					GUIKontroler.dodajKnjigu(naslov, isbn, izdavac, izdanje, ime1, 
 							prezime1, ime2, prezime2);
-					dispose();
 				}
 			});
 			btnSacuvaj.setBounds(10, 279, 89, 23);

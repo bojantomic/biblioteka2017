@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.EventQueue;
-import java.awt.HeadlessException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -9,7 +8,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import biblioteka.Autor;
@@ -21,6 +19,7 @@ public class GUIKontroler {
 	
 	private static GlavniProzor glavniProzor;
 	private static BibliotekaInterfejs biblioteka;
+	private static DodajKnjiguProzor dodajKnjigu;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -44,7 +43,7 @@ public class GUIKontroler {
 	}
 	
 	public static void otvoriDodajKnjiguProzor(){
-		DodajKnjiguProzor dodajKnjigu = new DodajKnjiguProzor();
+		dodajKnjigu = new DodajKnjiguProzor();
 		dodajKnjigu.setVisible(true);
 		dodajKnjigu.setLocationRelativeTo(glavniProzor);
 	}
@@ -54,7 +53,7 @@ public class GUIKontroler {
 			System.exit(0);
 	}
 	
-	public static String izaberiFajl(){
+	public static String ucitajKnjige(){
 		String fajl = "";
 		try {
 			JFileChooser fc = new JFileChooser();
@@ -62,8 +61,30 @@ public class GUIKontroler {
 			if(odgovor == JFileChooser.APPROVE_OPTION){
 				File file = fc.getSelectedFile();
 				fajl = file.getAbsolutePath();
+				biblioteka.ucitajKnjige(fajl);
+				glavniProzor.azurirajTabelu();
 			}
 		} catch (Exception e) {
+			JOptionPane.showMessageDialog(glavniProzor, e.getMessage(), "Greska",
+			JOptionPane.ERROR_MESSAGE);
+		}
+		
+		return fajl;
+		
+	}
+	
+	public static String sacuvajKnjige(){
+		String fajl = "";
+		try {
+			JFileChooser fc = new JFileChooser();
+			int odgovor = fc.showSaveDialog(glavniProzor);
+			if(odgovor == JFileChooser.APPROVE_OPTION){
+				File file = fc.getSelectedFile();
+				fajl = file.getAbsolutePath();
+				biblioteka.sacuvajKnjige(fajl);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(glavniProzor, e.getMessage(), "Greska",
 			JOptionPane.ERROR_MESSAGE);
 		}
@@ -90,9 +111,11 @@ public class GUIKontroler {
 			autori.add(a1);
 			autori.add(a2);
 			k.setAutori(autori);
-			biblioteka.dodajKnjigu(k);	
+			biblioteka.dodajKnjigu(k);
 			glavniProzor.azurirajTabelu();
+			dodajKnjigu.dispose();
 		} catch (Exception e) {
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Greska u cuvanju knjige!",
 					JOptionPane.ERROR_MESSAGE);
 		}

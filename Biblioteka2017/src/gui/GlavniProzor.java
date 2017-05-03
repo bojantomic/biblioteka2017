@@ -24,6 +24,10 @@ import javax.swing.JButton;
 
 public class GlavniProzor extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -386454969054350273L;
 	private JPanel contentPane;
 	private JMenuBar menuBar;
 	private JMenu mnFile;
@@ -86,7 +90,7 @@ public class GlavniProzor extends JFrame {
 			mntmOpen = new JMenuItem("Open...");
 			mntmOpen.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKontroler.izaberiFajl();
+					GUIKontroler.ucitajKnjige();
 				}
 			});
 			mntmOpen.setMnemonic(KeyEvent.VK_O);
@@ -98,6 +102,11 @@ public class GlavniProzor extends JFrame {
 	private JMenuItem getMntmSave() {
 		if (mntmSave == null) {
 			mntmSave = new JMenuItem("Save");
+			mntmSave.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.sacuvajKnjige();
+				}
+			});
 			mntmSave.setMnemonic(KeyEvent.VK_S);
 			mntmSave.setIcon(new ImageIcon(GlavniProzor.class.getResource("/com/sun/java/swing/plaf/windows/icons/FloppyDrive.gif")));
 			mntmSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
