@@ -1,5 +1,11 @@
 package biblioteka;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 
 import biblioteka.interfejs.BibliotekaInterfejs;
@@ -44,6 +50,30 @@ public class Biblioteka implements BibliotekaInterfejs {
 				rezultat.add(knjige.get(i));
 		//javan komentar
 		return rezultat;
+	}
+	
+	@Override
+	public void ucitajKnjige(String filepath) throws Exception {
+		ObjectInputStream in =
+			new ObjectInputStream(
+					new BufferedInputStream(
+							new FileInputStream(filepath)));
+		
+		knjige = (LinkedList<Knjiga>)(in.readObject());
+		
+		in.close();
+	}
+	
+	@Override
+	public void sacuvajKnjige(String filepath) throws Exception {
+		ObjectOutputStream out =
+				new ObjectOutputStream(
+						new BufferedOutputStream(
+								new FileOutputStream(filepath)));
+			
+			out.writeObject(knjige);
+			
+			out.close();
 	}
 
 }

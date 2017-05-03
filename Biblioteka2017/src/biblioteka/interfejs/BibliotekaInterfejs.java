@@ -13,4 +13,8 @@ public interface BibliotekaInterfejs {
 	public LinkedList<Knjiga> pronadjiKnjigu(
 			String naslov, Autor autor, long isbn, String izdavac);
 	
+	public void ucitajKnjige(String filepath) throws Exception;
+	public void sacuvajKnjige(String filepath) throws Exception;
+	
+	
 }
