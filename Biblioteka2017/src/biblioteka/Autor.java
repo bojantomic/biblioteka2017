@@ -75,18 +75,12 @@ public class Autor  implements Serializable{
 
 		this.prezime = prezime;
 	}
-	
-	/**
-	 * Vraca String sa svim podacima autora.
-	 * @return Ime i prezime autora uz odgovarajucu poruku.
-	 */
+
+	@Override
 	public String toString() {
 		return "Autor [ime=" + ime + ", prezime=" + prezime + "]";
 	}
-	
-	/**
-	 * Vraca hash code dobijen na osnovu vrednosti atributa ime i prezime
-	 */
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -95,11 +89,7 @@ public class Autor  implements Serializable{
 		result = prime * result + ((prezime == null) ? 0 : prezime.hashCode());
 		return result;
 	}
-	
-	/**
-	 * Poredi dva objekta klase Autor.
-	 * @return true ako su ime i prezime oba autora isti a false inace.
-	 */
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -121,6 +111,8 @@ public class Autor  implements Serializable{
 			return false;
 		return true;
 	}
+	
+	
 	
 	
 
