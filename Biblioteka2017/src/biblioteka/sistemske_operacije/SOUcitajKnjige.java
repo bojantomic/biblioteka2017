@@ -14,8 +14,11 @@ public class SOUcitajKnjige {
 			new ObjectInputStream(
 					new BufferedInputStream(
 							new FileInputStream(filepath)));
+		LinkedList<Knjiga> rezultat = (LinkedList<Knjiga>)(in.readObject());
+		
 		in.close();
-		return (LinkedList<Knjiga>)(in.readObject());
+		
+		return rezultat; 
 		
 	}
 
